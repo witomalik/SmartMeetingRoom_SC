@@ -12,19 +12,36 @@ namespace RoomManager.Services
     public class ManagementService : MainService
     {
       
-
+        /// <summary>
+        /// Add admin
+        /// </summary>
+        /// <param name="IP"></param>
+        /// <param name="cardNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool AddNewAdmin(string IP, string cardNum)
         {
             while (!AddNewPerson(IP, cardNum, 95)) ;
             return true;
         }
 
+        /// <summary>
+        /// Remove admin
+        /// </summary>
+        /// <param name="IP"></param>
+        /// <param name="cardNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool RemoveAdmin(string addr, string cardNum)
         {
             while (!RemovePerson(addr, cardNum, 95)) ;
             return true;
         }
 
+        /// <summary>
+        /// Check command and verify them
+        /// </summary>
+        /// <param name="IP"></param>
+        /// <param name="cardNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public string Commander(DirectCommand command)
         {
             if (!GetConnected(command.CardReader.IP, command.CardReader.Port))

@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RoomManager</name>
+    </assembly>
+    <members>
+        <member name="F:RoomManager.Databases.CrName.RESERVATION_DB">
+            <summary>
+            This Class is used as local memory to store temporary data of every reservation
+            </summary>
+        </member>
+        <member name="M:RoomManager.Databases.CrName.getCrGroupDb">
+            <summary>
+            To get all data from List of CrGroup
+            </summary>
+            <returns>
+            List of CrGroup
+            </returns>
+        </member>
+        <member name="M:RoomManager.Databases.CrName.addCrGroup(RoomManager.Models.CrGroup)">
+            <summary>
+            To add new CrGroup into RESERVATION_DB
+            </summary>
+            <param name="reserve"></param>
+            <returns>Added CrGroup to DB</returns>
+        </member>
+        <member name="M:RoomManager.Databases.CrName.getCrGroupName(System.String)">
+            <summary>
+            Find the CrGroup by card reader name
+            </summary>
+            <param name="id"></param>
+            <returns>It will return CrGroup</returns>
+        </member>
+        <member name="M:RoomManager.Databases.CrName.removeCrGroup(System.String)">
+            <summary>
+            Remove CrGroup on the List
+            </summary>
+            <param name="id"></param>
+            <returns>It will return true(success) or false(failed)</returns>
+        </member>
+        <member name="M:RoomManager.Databases.CrName.clearCrGroup">
+            <summary>
+            Delete all CrGroup on the List
+            </summary>
+            <returns>It will return return true(success) or false(failed)</returns>
+        </member>
+        <member name="M:RoomManager.Databases.CrName.findCrGroup(System.String)">
+            <summary>
+            Find that CrGroup Exist on List
+            </summary>
+            <param name="name"></param>
+            <returns>It will return True (Exist) False (Not Exist)</returns>
+        </member>
+        <member name="M:RoomManager.Databases.CrName.findIndexPerson(System.String,System.String)">
+            <summary>
+            Find the index of crgroup as the id
+            </summary>
+            <param name="name"></param>
+            <param name="cardNumber"></param>
+            <returns>It will retrun index as Id</returns>
+        </member>
+        <member name="T:RoomManager.Models.Automation">
+            <summary>
+            This model is used in Direct Command service
+            </summary>
+        </member>
+        <member name="P:RoomManager.Models.Automation.Command">
+            <summary>
+            Required attribute used in Direct Command service
+            </summary>
+        </member>
+        <member name="T:RoomManager.Models.CardReader">
+            <summary>
+            Model of card reader data
+            </summary>
+        </member>
+        <member name="P:RoomManager.Models.CardReader.IP">
+            <summary>
+            IP Address of CardReader ex: 140.118.122.121
+            </summary>
+        </member>
+        <member name="P:RoomManager.Models.CardReader.CrAddress">
+            <summary>
+            Card Reader Address ex: 00
+            </summary>
+        </member>
+        <member name="P:RoomManager.Models.CardReader.Name">
+            <summary>
+            Card Reader name ex: EE-809
+            </summary>
+        </member>
+        <member name="P:RoomManager.Models.CardReader.Port">
+            <summary>
+            Card Reader port ex: 4001
+            </summary>
+        </member>
+        <member name="T:RoomManager.Services.MainService">
+            <summary>
+            Main service of all
+            </summary>
+        </member>
+        <member name="F:RoomManager.Services.MainService.newCardReader">
+            <summary>
+            Build new object from .dll library
+            </summary>
+        </member>
+        <member name="P:RoomManager.Services.MainService.ConnectionStatus">
+            <summary>
+            Variable to check connection response
+            </summary>
+        </member>
+        <member name="P:RoomManager.Services.MainService.MessageReceived">
+            <summary>
+            Variable to check Message respond
+            </summary>
+        </member>
+        <member name="P:RoomManager.Services.MainService.ReceivedStatus">
+            <summary>
+            Variable to check Message received status
+            </summary>
+        </member>
+        <member name="P:RoomManager.Services.MainService.HexMsg">
+            <summary>
+            Variable to contruct response message
+            </summary>
+        </member>
+        <member name="M:RoomManager.Services.MainService.NewDevice_ConnectSucceed">
+            <summary>
+            Connection succed handler
+            </summary>
+        </member>
+        <member name="M:RoomManager.Services.MainService.NewDevice_ConnectFailed">
+            <summary>
+            Connection failed handler
+            </summary>
+        </member>
+        <member name="M:RoomManager.Services.MainService.NewDevice_GetBufferData(System.String,System.Byte[],System.String)">
+            <summary>
+            Response success handler
+            </summary>
+        </member>
+        <member name="M:RoomManager.Services.MainService.NewDevice_ShowEvent(System.String,System.String)">
+            <summary>
+            Response failed handler
+            </summary>
+        </member>
+        <member name="M:RoomManager.Services.MainService.GetConnected(System.String,System.Int32)">
+            <summary>
+            Used to create connection to Card Reader
+            </summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.AddNewPerson(System.String,System.String,System.Int32)">
+            <summary>
+            Add a person information such as Card Number and Group Number to Card Reader
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.RemovePerson(System.String,System.String,System.Int32)">
+            <summary>
+            Remove person information such as Card Number and Group Number from Card Reader
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.AddNewTimeZone(System.String,System.Int64,System.Int64,System.Int32)">
+            <summary>
+            Add a timezone information such as Start Time, End Time, and Zone Number (as an Id)
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.AddNewAccessGroup(System.String,System.Int32,System.Int32)">
+            <summary>
+            Add an access group matching person's group number and zone number
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.SetDate(System.String)">
+            <summary>
+            Set Card Reader date to Now
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.SetTime(System.String)">
+            <summary>
+            Set Card Reader time to Now
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.EnablePm(System.String)">
+            <summary>
+            Set Card Reader flag to check user legal status
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.EnableZm(System.String)">
+            <summary>
+            Set Card Reader flag to check zone legal status
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.ClearPm(System.String)">
+            <summary>
+            Clear all user from Card Reader
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.ClearZm(System.String)">
+            <summary>
+            Clear all time map from Card Reader
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.ClearAg(System.String)">
+            <summary>
+            Clear all access group from Card Reader
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.OpenDoor(System.String)">
+            <summary>
+            Immediately open the door
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.GetCounting(System.String)">
+            <summary>
+            Get user tap counting from Card Reader
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.MainService.ClearCo(System.String)">
+            <summary>
+            Clear user tap counting
+            </summary>
+            <param name="cardReader"></param>
+            <param name="cardNum"></param>
+            <param name="groupNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.ManagementService.AddNewAdmin(System.String,System.String)">
+            <summary>
+            Add admin
+            </summary>
+            <param name="IP"></param>
+            <param name="cardNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.ManagementService.RemoveAdmin(System.String,System.String)">
+            <summary>
+            Remove admin
+            </summary>
+            <param name="IP"></param>
+            <param name="cardNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="M:RoomManager.Services.ManagementService.Commander(RoomManager.Models.DirectCommand)">
+            <summary>
+            Check command and verify them
+            </summary>
+            <param name="IP"></param>
+            <param name="cardNum"></param>
+            <returns>True (Success) or False (Failed)</returns>
+        </member>
+        <member name="F:RoomManager.Services.ReservationService.Period">
+            <summary>
+            Constant variable to set period of EnableRoom function to be executed
+            </summary>
+        </member>
+        <member name="F:RoomManager.Services.ReservationService.gotCounting">
+            <summary>
+            Variable to store temp memory of counting data
+            </summary>
+        </member>
+        <member name="M:RoomManager.Services.ReservationService.initTime">
+            <summary>
+            Function to calculate initial (12.00 AM) time into ms
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RoomManager.Services.ReservationService.countTime(System.Int64)">
+            <summary>
+            Function to count End Time as a countdown for sending Tap Count logs
+            </summary>
+            <param name="eTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RoomManager.Services.ReservationService.DayChecker(System.String)">
+            <summary>
+            Funtion to create timer object and start them 
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RoomManager.Services.ReservationService.CountTap(System.Object)">
+            <summary>
+            Function for process count tap from Card Reader to an readable integer
+            </summary>
+            <param name="stateInfo"></param>
+        </member>
+        <member name="M:RoomManager.Services.ReservationService.EnableRoom(System.Object)">
+            <summary>
+            Function executed every time the timer is (12.00 AM)
+            </summary>
+            <param name="stateInfo"></param>
+        </member>
+        <member name="M:RoomManager.Services.ReservationService.BookRoomNow(RoomManager.Models.Reservation)">
+            <summary>
+            Function for immediately book a room today
+            </summary>
+            <param name="reservation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RoomManager.Services.ReservationService.CreateBooking(RoomManager.Models.Reservation)">
+            <summary>
+            Function for creating packet of booking to card reader
+            </summary>
+            <param name="reservation"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

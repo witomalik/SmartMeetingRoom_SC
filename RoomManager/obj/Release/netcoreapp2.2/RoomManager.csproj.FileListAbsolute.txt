@@ -14,3 +14,4 @@ F:\VisualStudio\RoomManager\RoomManager\obj\Release\netcoreapp2.2\RoomManager.Ra
 F:\VisualStudio\RoomManager\RoomManager\obj\Release\netcoreapp2.2\RoomManager.csproj.CopyComplete
 F:\VisualStudio\RoomManager\RoomManager\obj\Release\netcoreapp2.2\RoomManager.dll
 F:\VisualStudio\RoomManager\RoomManager\obj\Release\netcoreapp2.2\RoomManager.pdb
+F:\VisualStudio\RoomManager\RoomManager\bin\Release\netcoreapp2.2\RoomManager.xml

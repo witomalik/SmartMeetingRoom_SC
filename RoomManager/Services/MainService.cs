@@ -8,33 +8,65 @@ using System.Threading.Tasks;
 
 namespace RoomManager.Services
 {
+    /// <summary>
+    /// Main service of all
+    /// </summary>
     public class MainService
     {
+        /// <summary>
+        /// Build new object from .dll library
+        /// </summary>
         Devices newCardReader = new Devices();
 
+        /// <summary>
+        /// Variable to check connection response
+        /// </summary>
         public bool ConnectionStatus { get; set; } = false;
+
+        /// <summary>
+        /// Variable to check Message respond
+        /// </summary>
         public string MessageReceived { get; set; } = "";
+
+        /// <summary>
+        /// Variable to check Message received status
+        /// </summary>
         public bool ReceivedStatus { get; set; } = false;
+
+        /// <summary>
+        /// Variable to contruct response message
+        /// </summary>
         public string HexMsg { get; set; } = "";
 
         public MainService()
         {
+
             newCardReader.ConnectFailed += new Devices.ConnectFailedEventHandler(NewDevice_ConnectFailed);
             newCardReader.ConnectSucceed += new Devices.ConnectSucceedEventHandler(NewDevice_ConnectSucceed);
             newCardReader.GetBufferData += new Devices.GetBufferDataHandler(NewDevice_GetBufferData);
             newCardReader.ShowEvent += new Devices.ShowEventEventHandler(NewDevice_ShowEvent);
         }
 
+
+        /// <summary>
+        /// Connection succed handler
+        /// </summary>
         void NewDevice_ConnectSucceed()
         {
             ConnectionStatus = newCardReader.ConnectState;
         }
 
+        /// <summary>
+        /// Connection failed handler
+        /// </summary>
         void NewDevice_ConnectFailed()
         {
             ConnectionStatus = newCardReader.ConnectState;
         }
 
+        /// <summary>
+        /// Response success handler
+        /// </summary>
         private void NewDevice_GetBufferData(string CommandMode, byte[] FeedBack, string EventLog)
         {
             StringBuilder hex = new StringBuilder(FeedBack.Length * 2);
@@ -57,6 +89,9 @@ namespace RoomManager.Services
             Debug.WriteLine(HexMsg);
         }
 
+        /// <summary>
+        /// Response failed handler
+        /// </summary>
         private void NewDevice_ShowEvent(string Events, string tResult)
         {
             MessageReceived = Events + " " + tResult + " FAILED";
@@ -68,6 +103,12 @@ namespace RoomManager.Services
             Debug.WriteLine(Events);
         }
 
+        /// <summary>
+        /// Used to create connection to Card Reader
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="port"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool GetConnected(string ip, int port)
         {
             newCardReader.DisConnect();
@@ -78,6 +119,13 @@ namespace RoomManager.Services
             return ConnectionStatus;
         }
 
+        /// <summary>
+        /// Add a person information such as Card Number and Group Number to Card Reader
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool AddNewPerson(string cardReader, string cardNum, int groupNum)
         {
             // ( Address, GroupNumber, CardNumber, Legal, AllTimePass, Password, CampusID, UserName, Timing )
@@ -99,6 +147,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Remove person information such as Card Number and Group Number from Card Reader
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool RemovePerson(string cardReader, string cardNum, int groupNum)
         {
             // ( Address, GroupNumber, CardNumber, Legal, AllTimePass, Password, CampusID, UserName, Timing )
@@ -116,6 +171,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Add a timezone information such as Start Time, End Time, and Zone Number (as an Id)
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool AddNewTimeZone(string cardReader, long startTime, long endTime, int zoneNum)
         {
             // ( Address, ZoneNumber, StartTime, EndTime, Weekdays, Timing )
@@ -138,6 +200,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Add an access group matching person's group number and zone number
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool AddNewAccessGroup(string cardReader, int groupNum, int zoneNum)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -159,6 +228,14 @@ namespace RoomManager.Services
             return false;
         }
 
+
+        /// <summary>
+        /// Set Card Reader date to Now
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool SetDate(string cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -176,6 +253,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Set Card Reader time to Now
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool SetTime(string cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -192,6 +276,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Set Card Reader flag to check user legal status
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool EnablePm(string cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -207,6 +298,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Set Card Reader flag to check zone legal status
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool EnableZm(String cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -222,6 +320,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Clear all user from Card Reader
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool ClearPm(String cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -237,6 +342,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Clear all time map from Card Reader
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool ClearZm(String cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -252,6 +364,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Clear all access group from Card Reader
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool ClearAg(String cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -267,6 +386,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Immediately open the door
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool OpenDoor(String cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -281,6 +407,13 @@ namespace RoomManager.Services
             return false;
         }
 
+        /// <summary>
+        /// Get user tap counting from Card Reader
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public string GetCounting(String cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
@@ -297,6 +430,13 @@ namespace RoomManager.Services
             return null;
         }
 
+        /// <summary>
+        /// Clear user tap counting
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
         public bool ClearCo(String cardReader)
         {
             // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
