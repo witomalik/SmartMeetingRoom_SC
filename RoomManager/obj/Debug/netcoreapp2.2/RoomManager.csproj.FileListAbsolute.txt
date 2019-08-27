@@ -1,0 +1,16 @@
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.csproj.CoreCompileInputs.cache
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.AssemblyInfoInputs.cache
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.AssemblyInfo.cs
+F:\VisualStudio\RoomManager\RoomManager\bin\Debug\netcoreapp2.2\RoomManager.deps.json
+F:\VisualStudio\RoomManager\RoomManager\bin\Debug\netcoreapp2.2\RoomManager.runtimeconfig.json
+F:\VisualStudio\RoomManager\RoomManager\bin\Debug\netcoreapp2.2\RoomManager.runtimeconfig.dev.json
+F:\VisualStudio\RoomManager\RoomManager\bin\Debug\netcoreapp2.2\RoomManager.dll
+F:\VisualStudio\RoomManager\RoomManager\bin\Debug\netcoreapp2.2\RoomManager.pdb
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.csprojAssemblyReference.cache
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.RazorAssemblyInfo.cache
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.RazorAssemblyInfo.cs
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.RazorTargetAssemblyInfo.cache
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.dll
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.pdb
+F:\VisualStudio\RoomManager\RoomManager\bin\Debug\netcoreapp2.2\CtrNet-v.dll
+F:\VisualStudio\RoomManager\RoomManager\obj\Debug\netcoreapp2.2\RoomManager.csproj.CopyComplete
