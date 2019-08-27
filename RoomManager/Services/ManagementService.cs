@@ -80,6 +80,9 @@ namespace RoomManager.Services
                 case "SetTime":
                     while (!SetTime(command.CardReader.CrAddress)) ;
                     return ("Set time has done!");
+                case "F4Function":
+                    while (!F4Function(command.CardReader.CrAddress, command.FuncNo)) ;
+                    return ("Function sent done!");
             }
             return ("Command error!");
         }

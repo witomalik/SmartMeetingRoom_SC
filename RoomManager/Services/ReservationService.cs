@@ -88,7 +88,7 @@ namespace RoomManager.Services
             {
                 while (!GetConnected(reservation.CardReader.IP, reservation.CardReader.Port)) ;
                 gotCounting = GetCounting(reservation.CardReader.CrAddress);
-            } while (gotCounting == null);
+            } while (gotCounting.Length != 50);
 
             string trimmedCount = gotCounting.Remove(0, 34).Remove(10);
             

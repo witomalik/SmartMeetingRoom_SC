@@ -9,6 +9,7 @@ namespace RoomManager.Models
     {
         public string Command { get; set; }
         public string CardNum { get; set; }
+        public string FuncNo { get; set; }
         public CardReader CardReader { get; set; }
     }
 }

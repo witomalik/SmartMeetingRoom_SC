@@ -321,6 +321,50 @@ namespace RoomManager.Services
         }
 
         /// <summary>
+        /// Set Card Reader flag to count error status
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
+        public bool EnableEc(String cardReader)
+        {
+            // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
+            newCardReader.FunctionCode(
+                cardReader,
+                "8401",
+                2000);
+            if (MessageReceived == "54063030030d0a")
+            {
+                MessageReceived = "";
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// F4Function
+        /// </summary>
+        /// <param name="cardReader"></param>
+        /// <param name="cardNum"></param>
+        /// <param name="groupNum"></param>
+        /// <returns>True (Success) or False (Failed)</returns>
+        public bool F4Function(String cardReader, string funcNum)
+        {
+            // ( Address, GroupNumber, ZoneNumber, Legal, AllTimPass, FF, Timing )
+            newCardReader.FunctionCode(
+                cardReader,
+                funcNum,
+                2000);
+            if (MessageReceived == "54063030030d0a")
+            {
+                MessageReceived = "";
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Clear all user from Card Reader
         /// </summary>
         /// <param name="cardReader"></param>

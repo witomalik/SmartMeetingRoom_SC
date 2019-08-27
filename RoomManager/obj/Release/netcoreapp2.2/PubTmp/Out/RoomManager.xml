@@ -224,24 +224,6 @@
             <param name="groupNum"></param>
             <returns>True (Success) or False (Failed)</returns>
         </member>
-        <member name="M:RoomManager.Services.MainService.EnableEc(System.String)">
-            <summary>
-            Set Card Reader flag to count error status
-            </summary>
-            <param name="cardReader"></param>
-            <param name="cardNum"></param>
-            <param name="groupNum"></param>
-            <returns>True (Success) or False (Failed)</returns>
-        </member>
-        <member name="M:RoomManager.Services.MainService.F4Function(System.String,System.String)">
-            <summary>
-            F4Function
-            </summary>
-            <param name="cardReader"></param>
-            <param name="cardNum"></param>
-            <param name="groupNum"></param>
-            <returns>True (Success) or False (Failed)</returns>
-        </member>
         <member name="M:RoomManager.Services.MainService.ClearPm(System.String)">
             <summary>
             Clear all user from Card Reader
